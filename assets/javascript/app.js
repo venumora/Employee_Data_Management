@@ -23,6 +23,10 @@ function addRow(empRow, value) {
 	empRow.append(nameCol);
 }
 
+function clearForm() {
+	$('#addEmployeeForm')[0].reset();
+}
+
 empRef.orderByChild('name').on('child_added', function(data) {
 	const employee = data.val();
 	if(employee) {
@@ -48,11 +52,12 @@ $('#addEmployee').click(function(event) {
 	if(name && role && startDate && monthlyRate) {
 		event.preventDefault();
 		empRef.push({name, role, startDate, monthlyRate});
+		clearForm();
 	}
 });
 
 
 $("#clearForm").click(function(event){
 	event.preventDefault();
-	$('#addEmployeeForm')[0].reset();
+	clearForm();
 });
