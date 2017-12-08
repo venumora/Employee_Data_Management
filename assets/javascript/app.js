@@ -23,7 +23,7 @@ function addRow(empRow, value) {
 	empRow.append(nameCol);
 }
 
-empRef.on('child_added', function(data) {
+empRef.orderByChild('name').on('child_added', function(data) {
 	const employee = data.val();
 	if(employee) {
 		let empRow = $('<tr>');
@@ -40,15 +40,16 @@ empRef.on('child_added', function(data) {
 	}
 });
 
-$('#addEmployee').click(function(event){
-	event.preventDefault();
+$('#addEmployee').click(function(event) {
 	const name = $('#empName').val().trim();
 	const role = $('#empRole').val().trim();
 	const startDate = moment($('#empStartDate').val().trim()).format("MM/DD/YYYY");
 	const monthlyRate = $('#empMonthlyRate').val().trim();
-
-	empRef.push({name, role, startDate, monthlyRate});
-})
+	if(name && role && startDate && monthlyRate) {
+		event.preventDefault();
+		empRef.push({name, role, startDate, monthlyRate});
+	}
+});
 
 
 $("#clearForm").click(function(event){

@@ -51,19 +51,19 @@
 				<form id="addEmployeeForm">
 					<div class="input-group">
 						<label for="empName">Employee Name</label>
-						<input type="text" class="form-control" id="empName" placeholder="What is his name?">
+						<input required type="text" class="form-control" id="empName" name="empName" placeholder="What is his name?">
 					</div>
 					<div class="input-group">
 						<label for="empRole">Role</label>
-						<input type="text" id="empRole" class="form-control" placeholder="What is he?">
+						<input required type="text" id="empRole" name="empRole" class="form-control" placeholder="What is he?">
 					</div>
 					<div class="input-group">
 						<label for="empStartDate">Employee Start Date</label>
-						<input type="date" id="empStartDate" class="form-control" placeholder="When did he start working? ">
+						<input required type="date" id="empStartDate" name="empStartDate" class="form-control" placeholder="When did he start working? ">
 					</div>
 					<div class="input-group">
 						<label for="empMonthlyRate">Monthly Rate</label>
-						<input type="text" id="empMonthlyRate" class="form-control" placeholder="What will you be paying for him?">
+						<input required type="text" id="empMonthlyRate" name="empMonthlyRate" class="form-control" placeholder="What will you be paying for him?">
 					</div>
 					<button role="submit" class="btn btn-primary" id="addEmployee">Submit</button>
 					<button role="reset" class="btn btn-default" id="clearForm">Reset</button>
