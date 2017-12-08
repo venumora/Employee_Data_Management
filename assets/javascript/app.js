@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 // Get a reference to the database service
 const database = firebase.database();
 
-const empRef = firebase.database().ref('employees');
+const empRef = firebase.database().ref('employees').orderByChild('name');
 
 empRef.on('child_added', function(data) {
 	const employee = data.val();
