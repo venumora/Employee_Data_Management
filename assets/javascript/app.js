@@ -17,10 +17,23 @@ const database = firebase.database();
 
 const empRef = firebase.database().ref('employees').orderByChild('name');
 
+function addRow(empRow, value) {
+	let nameCol = $('<td>');
+	nameCol.text(value);
+	empRow.append(nameCol);
+}
+
 empRef.on('child_added', function(data) {
 	const employee = data.val();
 	if(employee) {
-		alert(employee.name);
+		let empRow = $('<tr>');
+		addRow(empRow, employee.name);
+		addRow(empRow, employee.role);
+		addRow(empRow, employee.startDate);
+		addRow(empRow, '');
+		addRow(empRow, employee.monthlyRate);
+		addRow(empRow, '');
+		$('#listOfEmployees').append(empRow);
 	}
 });
 
