@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 // Get a reference to the database service
 const database = firebase.database();
 
-const empRef = firebase.database().ref('employees').orderByChild('name');
+const empRef = firebase.database().ref('employees');
 
 function addRow(empRow, value) {
 	let nameCol = $('<td>');
@@ -30,9 +30,12 @@ empRef.on('child_added', function(data) {
 		addRow(empRow, employee.name);
 		addRow(empRow, employee.role);
 		addRow(empRow, employee.startDate);
-		addRow(empRow, '');
+
+		const numMonths = moment().diff(employee.startDate, 'months');
+
+		addRow(empRow, numMonths);
 		addRow(empRow, employee.monthlyRate);
-		addRow(empRow, '');
+		addRow(empRow, numMonths * employee.monthlyRate);
 		$('#listOfEmployees').append(empRow);
 	}
 });
